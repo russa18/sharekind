@@ -29,8 +29,6 @@ const MobileNavbar = () => {
       // bg="gray.800"
       color="white"
       p="4"
-      borderRightWidth="1px"
-      borderRightColor="#FF69B4"
       bgImage="black"
       hideFrom="sm"
     >
@@ -45,14 +43,14 @@ const MobileNavbar = () => {
           as={RouterLink}
           to="/"
           // mb="4"
-          _hover={{ textDecoration: "none", bg: "gray.700" }}
+          _hover={{ textDecoration: "none", bg: "pink.400" }}
           p="2"
           borderRadius="full"
-          bg={isActive("/") ? "gray.700" : "transparent"}
-          color={isActive("/") ? "yellow.400" : "inherit"}
+          bg={isActive("/") ? "pink.400" : "gray.700"}
+          color={isActive("/") ? "inherit" : "yellow.400"}
         >
           <Flex>
-            <FaHome size="1.5rem" color="white"/>
+            <FaHome size="1.5rem" color="" />
           </Flex>
         </Link>
 
@@ -60,11 +58,11 @@ const MobileNavbar = () => {
           as={RouterLink}
           to="/explore"
           // mb="4"
-          _hover={{ textDecoration: "none", bg: "gray.700" }}
+          _hover={{ textDecoration: "none", bg: "pink.400" }}
           p="2"
           borderRadius="full"
-          bg={isActive("/explore") ? "gray.700" : "transparent"}
-          color={isActive("/explore") ? "yellow.400" : "inherit"}
+          bg={isActive("/explore") ? "pink.400" : "gray.700"}
+          color={isActive("/explore") ? "inherit" : "yellow.400"}
         >
           <Flex>
             <MdOutlineExplore size="1.5rem" />
@@ -76,11 +74,13 @@ const MobileNavbar = () => {
               as="button"
               variant="plain"
               // mb="4"
-              _hover={{ textDecoration: "none", bg: "gray.700" }}
+              _hover={{ textDecoration: "none", bg: "pink.400" }}
               p="2"
               borderRadius="full"
               display="flex"
               alignItems="center"
+              bg="gray.700"
+              color="yellow.400"
             >
               <IoAddCircleOutline size="2.5rem" />
             </Box>
@@ -93,11 +93,13 @@ const MobileNavbar = () => {
               as="button"
               variant="plain"
               // mb="4"
-              _hover={{ textDecoration: "none", bg: "gray.700" }}
+              _hover={{ textDecoration: "none", bg: "pink.400" }}
               p="2"
               borderRadius="full"
               display="flex"
               alignItems="center"
+              bg="gray.700"
+              color="yellow.400"
             >
               <FaSearch size="1rem" />
             </Box>
@@ -109,10 +111,10 @@ const MobileNavbar = () => {
           to="/settings"
           as={RouterLink}
           mb="4"
-          _hover={{ textDecoration: "none", bg: "gray.700" }}
+          _hover={{ textDecoration: "none", bg: "pink.400" }}
           p="2"
           borderRadius="md"
-          bg={isActive("/settings") ? "gray.700" : "transparent"}
+          bg={isActive("/settings") ? "gray.700" : "pink.400"}
           color={isActive("/settings") ? "yellow.400" : "inherit"}
         >
           <Flex>
@@ -128,11 +130,11 @@ const MobileNavbar = () => {
           to="/profile"
           as={RouterLink}
           // mb="4"
-          _hover={{ textDecoration: "none", bg: "gray.700" }}
+          _hover={{ textDecoration: "none", bg: "pink.400" }}
           p="2"
           borderRadius="full"
-          bg={isActive("/profile") ? "gray.700" : "transparent"}
-          color={isActive("/profile") ? "yellow.400" : "inherit"}
+          bg={isActive("/profile") ? "pink.400" : "gray.700"}
+          color={isActive("/profile") ? "inherit" : "yellow.400"}
         >
           <Flex>
             <Avatar

@@ -8,7 +8,7 @@ import MobileNavbar from "./components/MobileNavbar";
 
 const Layout = () => {
   return (
-    <Provider 
+    <Provider
     // value={defaultSystem}
     >
       <ColorModeProvider>
@@ -16,24 +16,24 @@ const Layout = () => {
           <Sidebar />
           <Flex
             direction="column"
-            justifyContent="space-between"
+            // justifyContent="space-between"
             // w="10/12"
-            sm={{w:"full"}}
+            sm={{ w: "full" }}
             xl={{ w: "full" }}
+            h="full"
             overflowX="hidden"
           >
-            <Navbar/>
+            <Navbar />
             <Box
-           
               as="main"
-              h={{base:"85vh",md:"90vh"}}
+              h={{ base: "80vh", sm: "95vh", lg: "90vh" }}
               overflowY="auto"
               p="4"
               bgImage="linear-gradient({colors.black}, {colors.gray.700})"
             >
               <Outlet />
             </Box>
-            <MobileNavbar/>
+            <MobileNavbar />
             {/* <Footer /> */}
           </Flex>
         </Flex>

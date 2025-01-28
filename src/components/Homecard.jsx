@@ -31,7 +31,7 @@ const Homecard = ({ isHome }) => {
               shape="rounded"
             />
             <Flex
-              direction={{ base: "column", lg: "row" }}
+              direction="row" 
               justifyContent="space-between"
               w="full"
             >

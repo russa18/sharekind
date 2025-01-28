@@ -154,7 +154,7 @@ const Sidebar = () => {
           bg={isActive("/settings") ? "gray.700" : "transparent"}
           color={isActive("/settings") ? "yellow.400" : "inherit"}
         >
-          <Flex>
+          <Flex  >
             <MdOutlineSettingsSuggest size="1.5rem" />
 
             <Text ms="10px" display={{ sm: "none", xl: "block" }}>
