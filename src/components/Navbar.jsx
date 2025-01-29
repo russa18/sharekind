@@ -50,14 +50,12 @@ const Navbar = () => {
         >
           About
         </Link>
-        <Tooltip content="Toggle theme">
-          <ColorModeButton
+           <ColorModeButton
             size={{ base: "xs", md: "xl" }}
             color="orange.500"
             _hover={{ bg: "none" }}
           />
-        </Tooltip>
-        {/* <Link
+         {/* <Link
           to="/settings"
           as={RouterLink}
           p="1"
