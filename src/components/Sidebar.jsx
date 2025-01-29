@@ -144,7 +144,7 @@ const Sidebar = () => {
           <SeachDialog />
         </DialogRoot>
 
-        <Link
+        {/* <Link
           to="/settings"
           as={RouterLink}
           mb="4"
@@ -161,7 +161,7 @@ const Sidebar = () => {
               Settings
             </Text>
           </Flex>
-        </Link>
+        </Link> */}
 
         <Link
           to="/profile"

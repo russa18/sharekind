@@ -11,8 +11,10 @@ import Comments from "./Comments";
 
 const FullPostCard = ({ isOpen, onClose }) => {
   return (
-    <DialogRoot open={isOpen} onOpenChange={onClose} size="xl" >
-      <DialogContent mx="1rem" borderWidth="1px" borderColor="pink.400" >
+    <DialogRoot open={isOpen} onOpenChange={onClose} size="xl"  >
+      <DialogContent mx="1rem" 
+      // borderWidth="1px" borderColor="pink.400"
+       >
         <DialogBody pt="4">
           <DialogTitle mb="4">Posted By : User Name</DialogTitle>
           {/* <DialogDescription mb="4">

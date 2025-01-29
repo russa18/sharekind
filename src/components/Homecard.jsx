@@ -65,7 +65,7 @@ const Homecard = ({ isHome }) => {
           borderTopColor="pink.400"
           pt="4"
         >
-          <Grid templateColumns="repeat(3, 1fr)" gap="6" w="full">
+          <Grid templateColumns="repeat(3, 1fr)" gap={{base:"2",sm:"6"}} w="full">
             <Flex
               direction="column"
               justifyContent="center"
@@ -74,7 +74,7 @@ const Homecard = ({ isHome }) => {
               transition="opacity 0.2s ease-in-out"
             >
               <FaHandHoldingHeart color="red" size="1.5rem" />
-              <Text textStyle="xs" mt="5px">
+              <Text textStyle="xs" mt="5px" textAlign="center">
                 59 Likes
               </Text>
             </Flex>
@@ -86,7 +86,7 @@ const Homecard = ({ isHome }) => {
               transition="opacity 0.2s ease-in-out"
             >
               <FaRegComment size="1.5rem" />
-              <Text textStyle="xs" mt="5px">
+              <Text textStyle="xs" mt="5px" textAlign="center">
                 59 Comments
               </Text>
             </Flex>
@@ -98,7 +98,7 @@ const Homecard = ({ isHome }) => {
               transition="opacity 0.2s ease-in-out"
             >
               <FaShare size="1.5rem" color="grey" />
-              <Text textStyle="xs" mt="5px">
+              <Text textStyle="xs" mt="5px" textAlign="center">
                 16 shares
               </Text>
             </Flex>

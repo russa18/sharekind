@@ -12,7 +12,7 @@ const Layout = () => {
     // value={defaultSystem}
     >
       <ColorModeProvider>
-        <Flex direction="row" gridTemplateColumns="2fr 10fr">
+        <Flex direction="row" gridTemplateColumns="2fr 10fr"  >
           <Sidebar />
           <Flex
             direction="column"

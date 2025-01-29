@@ -34,15 +34,13 @@ const Navbar = () => {
       <Text textStyle={{ base: "lg", md: "2xl" }} color="pink.500">
         <Text
           as="span"
-          display={{ base: "none", md: "inline" }} // Hide on mobile, show on larger screens
+          // display={{ base: "none", md: "inline" }} // Hide on mobile, show on larger screens
         >
-          Worldwide Kindness:
+          Worldwide Kindness:{" "}
         </Text>
-        <Tooltip content="Worldwide Kindness" hideFrom="sm">
-          <Text as="span" fontWeight="bold">
-            598 +
-          </Text>
-        </Tooltip>
+        <Text as="span" fontWeight="bold">
+          598 +
+        </Text>
       </Text>
       <HStack textStyle="sm">
         <Link
@@ -52,13 +50,14 @@ const Navbar = () => {
         >
           About
         </Link>
-        <ColorModeButton
-          size={{ base: "xs", md: "xl" }}
-          color="orange.500"
-          _hover={{ bg: "none" }}
-        />
-
-        <Link
+        <Tooltip content="Toggle theme">
+          <ColorModeButton
+            size={{ base: "xs", md: "xl" }}
+            color="orange.500"
+            _hover={{ bg: "none" }}
+          />
+        </Tooltip>
+        {/* <Link
           to="/settings"
           as={RouterLink}
           p="1"
@@ -67,7 +66,7 @@ const Navbar = () => {
           hideFrom="sm"
         >
           <MdOutlineSettingsSuggest size="1.5rem" />
-        </Link>
+        </Link> */}
         <Button
           variant="plain"
           w="fit-content"

@@ -15,7 +15,7 @@ const Comments = () => {
         />
 
         <Stack ms="4">
-           <Link to="/profile">Rushikesh sawant mandrekar ashevme mandremee </Link>
+           <Link to="/profile" outline="none">Rushikesh sawant mandrekar ashevme mandremee </Link>
           <Text textStyle="xs">25-01-2025</Text>
         </Stack>
       </Flex>
