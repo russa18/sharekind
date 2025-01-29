@@ -4,9 +4,9 @@ import { Link } from "react-router";
 
 import React from "react";
 
-const Comments = () => {
+const Comments = ({ commentData }) => {
   return (
-    <Flex direction="column" my="10">
+    <Flex direction="column" my="8">
       <Flex alignItems="top" mb="2">
         <Avatar
           name="Segun Adebayo"
@@ -15,16 +15,13 @@ const Comments = () => {
         />
 
         <Stack ms="4">
-           <Link to="/profile" outline="none">Rushikesh sawant mandrekar ashevme mandremee </Link>
-          <Text textStyle="xs">25-01-2025</Text>
+          <Link to="/profile" outline="none">
+            Rushikesh sawant
+          </Link>
+          <Text textStyle="xs">{commentData?.createdAt}</Text>
         </Stack>
       </Flex>
-      <Text  textStyle="sm">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cum,
-        minus fuga maxime ab quidem sapiente harum doloribus veniam hic aut odit
-        neque repudiandae distinctio corrupti! Debitis placeat eius officia
-        ipsam suscipit.
-      </Text>
+      <Text textStyle="sm">{commentData?.text}</Text>
     </Flex>
   );
 };

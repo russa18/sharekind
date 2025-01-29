@@ -190,7 +190,9 @@ const Sidebar = () => {
       <Button variant="surface" w="fit-content" mx="auto">
         <MdLogout />
         <Text display={{ sm: "none", xl: "block" }}>Logout</Text>
+       
       </Button>
+      <Button variant="surface" colorPalette="blue">Login</Button>
     </Flex>
   );
 };

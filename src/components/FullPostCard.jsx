@@ -1,4 +1,4 @@
-import { Grid, Box } from "@chakra-ui/react";
+import { Grid, Box, Text } from "@chakra-ui/react";
 import {
   DialogBody,
   DialogCloseTrigger,
@@ -8,13 +8,22 @@ import {
 } from "@/components/ui/dialog";
 import CommentInput from "./CommentInput";
 import Comments from "./Comments";
+import { useEffect, useState } from "react";
 
-const FullPostCard = ({ isOpen, onClose }) => {
+const FullPostCard = ({ isOpen, onClose, postData }) => {
+  const [allComments, setAllComments] = useState([]);
+
+  // Update comments when postData changes
+  useEffect(() => {
+    setAllComments(postData?.comments || []);
+  }, [postData]);
+
   return (
-    <DialogRoot open={isOpen} onOpenChange={onClose} size="xl"  >
-      <DialogContent mx="1rem" 
-      // borderWidth="1px" borderColor="pink.400"
-       >
+    <DialogRoot open={isOpen} onOpenChange={onClose} size="xl">
+      <DialogContent
+        mx="1rem"
+        // borderWidth="1px" borderColor="pink.400"
+      >
         <DialogBody pt="4">
           <DialogTitle mb="4">Posted By : User Name</DialogTitle>
           {/* <DialogDescription mb="4">
@@ -39,42 +48,19 @@ const FullPostCard = ({ isOpen, onClose }) => {
           >
             <Box
               h="70vh"
-              overflowY="scroll"
-              scrollbar="hidden"
+              overflowY="auto"
               p="4"
               textStyle="md"
+              sx={{
+                "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for Webkit browsers
+                "-ms-overflow-style": "none", // Hide scrollbar for IE and Edge
+                "scrollbar-width": "none", // Hide scrollbar for Firefox
+              }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              tempore non vero illo molestiae dolores? Quis earum iusto dolor
-              aut exercitationem commodi quae voluptatem beatae saepe, aliquam
-              iure. Pariatur, nam. Dolor iure pariatur eius explicabo adipisci
-              minima, qui optio aut, et laborum molestias aliquam, perspiciatis
-              assumenda? Minima doloremque rerum repellat quos soluta ducimus
-              rem possimus. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Excepturi error rerum nisi delectus accusamus quaerat,
-              similique iusto maiores, itaque vitae dolorem earum eaque vel
-              corrupti aliquid magni voluptatem laborum mollitia esse, saepe
-              ipsam aut sit? Suscipit aliquid nihil fugiat nesciunt ullam
-              eligendi. Impedit quae iusto exercitationem. Dolore impedit, nobis
-              nesciunt quia tempora velit sed voluptates maiores officiis,
-              aliquid quos mollitia harum quae! Hic deserunt doloribus numquam,
-              nostrum cum earum! Labore exercitationem sequi ipsam non
-              voluptatibus ex sunt in! Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Veniam tempore non vero illo molestiae dolores?
-              Quis earum iusto dolor aut exercitationem commodi quae voluptatem
-              beatae saepe, aliquam iure. Pariatur, nam. Dolor iure pariatur
-              eius explicabo adipisci minima, qui optio aut, et laborum
-              molestias aliquam, perspiciatis assumenda? Minima doloremque rerum
-              repellat quos soluta ducimus rem possimus. Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Excepturi error rerum nisi
-              delectus accusamus quaerat, similique iusto maiores, itaque vitae
-              dolorem earum eaque vel corrupti aliquid magni voluptatem laborum
-              mollitia esse, saepe ipsam aut sit? Suscipit aliquid nihil fugiat
-              nesciunt ullam eligendi. Impedit quae iusto exercitationem. Dolore
-              impedit, nobis nesciunt quia tempora velit sed voluptates maiores
-              officiis, aliquid quos mollitia harum quae! Hic deserunt doloribus
-              numquam, nostrum cum earum! Labore exercitationem sequi ipsam non
-              voluptatibus ex sunt in!
+              <Text mb="1rem" fontWeight="bold" textStyle="lg">
+                {postData?.title}
+              </Text>
+              <Text>{postData?.postText}</Text>
             </Box>
             <Box>
               <Box
@@ -84,12 +70,13 @@ const FullPostCard = ({ isOpen, onClose }) => {
                 ps="4"
                 position="relative"
               >
-                <Comments />
-                <Comments />
-                <Comments />
-                <Comments /> <Comments /> <Comments /> <Comments /> <Comments />{" "}
-                <Comments /> <Comments /> <Comments /> <Comments /> <Comments />{" "}
-                <Comments />
+                {allComments.length > 0 ? (
+                  allComments.map((comment, i) => (
+                    <Comments key={i} commentData={comment} />
+                  ))
+                ) : (
+                  <Text textAlign="center" mt="5rem">No comments yet</Text>
+                )}
               </Box>
               <Box p="4">
                 <Box
@@ -98,7 +85,10 @@ const FullPostCard = ({ isOpen, onClose }) => {
                   pt="10px"
                   mt="10px"
                 >
-                  <CommentInput />
+                  <CommentInput
+                    postId={postData?.id}
+                    setAllComments={setAllComments}
+                  />
                 </Box>
               </Box>
             </Box>

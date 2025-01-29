@@ -1,17 +1,18 @@
-import { Card, Flex, Text, Button, Grid } from "@chakra-ui/react";
+import { Card, Flex, Text, Button, Grid, Box } from "@chakra-ui/react";
 import { FaHandHoldingHeart, FaRegComment, FaShare } from "react-icons/fa";
 
 import { Avatar } from "@/components/ui/avatar";
 import { Link } from "react-router";
-import { useState } from "react";
 import FullPostCard from "./FullPostCard";
+import { useState } from "react";
 
-const Homecard = ({ isHome }) => {
+const Homecard = ({ isHome, data }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   function showPost() {
     setIsDialogOpen(true);
   }
+// console.log(data?.comments?.length);
 
   return (
     <>
@@ -30,11 +31,7 @@ const Homecard = ({ isHome }) => {
               size="lg"
               shape="rounded"
             />
-            <Flex
-              direction="row" 
-              justifyContent="space-between"
-              w="full"
-            >
+            <Flex direction="row" justifyContent="space-between" w="full">
               <Flex direction="column" ms="4">
                 <Card.Title>
                   <Link to="/profile">Nue Camp</Link>
@@ -53,10 +50,23 @@ const Homecard = ({ isHome }) => {
             </Flex>
           </Flex>
 
-          <Card.Description my="1rem">
-            This is the card body. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Curabitur nec odio vel dui euismod fermentum.
-          </Card.Description>
+          <Box my="1rem">
+            <Text mb="1rem" fontWeight="bold" textStyle="lg">
+              {data?.title}
+            </Text>
+
+            <Box as="span">
+              {(() => {
+                const titleWords = data?.title?.split(" ") || [];
+                const postWords = data?.postText?.split(" ") || [];
+                const totalWords = [...titleWords, ...postWords];
+
+                return totalWords.length > 60
+                  ? totalWords.slice(0, 60).join(" ") + " ..."
+                  : totalWords.join(" ");
+              })()}
+            </Box>
+          </Box>
         </Card.Body>
         <Card.Footer
           justifyContent="center"
@@ -65,7 +75,11 @@ const Homecard = ({ isHome }) => {
           borderTopColor="pink.400"
           pt="4"
         >
-          <Grid templateColumns="repeat(3, 1fr)" gap={{base:"2",sm:"6"}} w="full">
+          <Grid
+            templateColumns="repeat(3, 1fr)"
+            gap={{ base: "2", sm: "6" }}
+            w="full"
+          >
             <Flex
               direction="column"
               justifyContent="center"
@@ -87,7 +101,10 @@ const Homecard = ({ isHome }) => {
             >
               <FaRegComment size="1.5rem" />
               <Text textStyle="xs" mt="5px" textAlign="center">
-                59 Comments
+                {
+              data?.comments ? data?.comments?.length :" "
+              }
+              {" "}comments
               </Text>
             </Flex>
             <Flex
@@ -110,6 +127,7 @@ const Homecard = ({ isHome }) => {
         <FullPostCard
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
+          postData={data}
         />
       )}
     </>
